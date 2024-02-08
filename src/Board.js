@@ -36,13 +36,12 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.5 }) {
     // TODO: create array-of-arrays of true/false values
 
     let initialBoard = Array(nrows)
-      .fill(null)
-      .map(() => Array(ncols).fill(false)); // Initialize all cells to false
-
-    // Randomly set some cells to true based on chanceLightStartsOn
-    initialBoard = initialBoard.map(row =>
-      row.map(() => Math.random() >= chanceLightStartsOn)
-    );
+      .fill()
+      .map(() => {
+        return Array(ncols)
+          .fill()
+          .map(() => Math.random() >= chanceLightStartsOn);
+      });
 
     return initialBoard;
   }
